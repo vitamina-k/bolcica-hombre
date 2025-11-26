@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>BOLCICA — Hombre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5F1E9;
+      --text: #1E1E1E;
+      --brown-dark: #5A3A26;
+      --brown-light: #C89B68;
+      --accent: #D8C7A3;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245, 241, 233, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--accent);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.2em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-icons {
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      padding: 48px 0 32px;
+      align-items: center;
+    }
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      max-width: 460px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--brown-dark);
+      color: var(--white);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--brown-dark);
+      color: var(--brown-dark);
+    }
+    .hero-note {
+      font-size: 0.85rem;
+      color: #555;
+    }
+    .hero-image-placeholder {
+      background: linear-gradient(135deg, var(--brown-dark), var(--brown-light));
+      border-radius: 18px;
+      min-height: 260px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 22px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image-placeholder span {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+    }
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(0,0,0,0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+    .section {
+      padding: 24px 0;
+    }
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+    .grid-4 {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card-image {
+      background: #eee;
+      border-radius: 10px;
+      height: 140px;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+    .card-meta {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .price {
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+    .trust-item {
+      background: rgba(255,255,255,0.6);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--accent);
+    }
+    .newsletter {
+      background: #e7ddcc;
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    .newsletter form {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .newsletter input[type="email"] {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--brown-dark);
+      min-width: 220px;
+    }
+    footer {
+      border-top: 1px solid var(--accent);
+      margin-top: 24px;
+      padding: 16px 0 24px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">BOLCICA</div>
+      <nav class="nav-links">
+        <a href="#">Inicio</a>
+        <a href="#">Hombre</a>
+        <a href="#">Mujer</a>
+        <a href="#">Colecciones</a>
+        <a href="#">Sobre BOLCICA</a>
+        <a href="#">Contacto</a>
+      </nav>
+      <div class="nav-icons">
+        <span>🔍</span>
+        <span>👤</span>
+        <span>👜</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">Colección de Hombre</h1>
+        <p class="hero-subtitle">
+          Piezas de marroquinería de piel para hombres que valoran la calidad y la elegancia.
+        </p>
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary">Ver carteras</a>
+          <a href="#" class="btn btn-secondary">Ver cinturones</a>
+          <a href="#" class="btn btn-secondary">Ver bolsos y mochilas</a>
+        </div>
+        <p class="hero-note">Descubre nuestros clásicos y últimas novedades.</p>
+      </div>
+      <div class="hero-image-placeholder">
+        <span>Cinturones, carteras y mochilas de piel para él.</span>
+        <div class="badge">Edición hombre</div>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS HOMBRE -->
+    <section class="section">
+      <h2 class="section-title">Categorías de hombre</h2>
+      <div class="grid grid-4">
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Carteras</div>
+          <p class="card-meta">Modelos compactos y estilosos para uso diario.</p>
+          <a href="#" class="btn btn-secondary">Ver carteras</a>
+        </article>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Cinturones</div>
+          <p class="card-meta">Piel resistente y hebillas robustas para cualquier ocasión.</p>
+          <a href="#" class="btn btn-secondary">Ver cinturones</a>
+        </article>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Bolsos</div>
+          <p class="card-meta">Portafolios y bandoleras para trabajo y ocio.</p>
+          <a href="#" class="btn btn-secondary">Ver bolsos</a>
+        </article>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Mochilas</div>
+          <p class="card-meta">Diseños prácticos para viajes y ciudad.</p>
+          <a href="#" class="btn btn-secondary">Ver mochilas</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- TOP VENTAS -->
+    <section class="section">
+      <h2 class="section-title">Top ventas – Hombre</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Cinturón clásico marrón</div>
+          <p class="price">39,90 €</p>
+          <button class="btn btn-primary">Añadir al carrito</button>
+        </article>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Cartera de piel negra</div>
+          <p class="price">29,90 €</p>
+          <button class="btn btn-primary">Añadir al carrito</button>
+        </article>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Mochila vintage cuero</div>
+          <p class="price">79,90 €</p>
+          <button class="btn btn-primary">Añadir al carrito</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- BLOQUE CONFIANZA -->
+    <section class="section">
+      <div class="trust">
+        <div class="trust-item">Piel seleccionada para durar años.</div>
+        <div class="trust-item">Hecho a mano en talleres locales.</div>
+        <div class="trust-item">Cambios y devoluciones sencillas.</div>
+        <div class="trust-item">Asesoramiento personalizado.</div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section">
+      <div class="newsletter">
+        <div>
+          <strong>Únete a nuestra comunidad.</strong><br/>
+          Recibe novedades, ofertas privadas y guías de estilo para hombre.
+        </div>
+        <form>
+          <input type="email" placeholder="Tu correo electrónico" />
+          <button class="btn btn-primary" type="submit">Quiero unirme</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      BOLCICA — Marroquinería de piel · Castellón<br/>
+      Visítanos en nuestro local del centro comercial o compra online cuando quieras.
+    </div>
+  </footer>
+</body>
+</html>
